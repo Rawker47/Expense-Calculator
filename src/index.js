@@ -4,13 +4,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-
+import {StateProvider} from './StateProvider';
+import reducer,{initialState} from './reducer';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <StateProvider intialState={initialState} reducer={reducer}>
     <App />
+
+    </StateProvider>
   </React.StrictMode>
 );
 reportWebVitals();
+

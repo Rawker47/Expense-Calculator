@@ -1,18 +1,26 @@
 import { Button } from '@mui/material';
 import React from 'react'
 import "./Login.css"
-
-// import {auth,provider} from "./firebase"
+import { GoogleAuthProvider,signInWithPopup } from "firebase/auth";
+import {useStateValue} from './StateProvider';
+import {actionTypes} from './reducer';
+import {auth} from "./fb";
  
-
 function Login() {
-    const signIn =()=>{
-// auth
-// .signInWithPopup(provider)
-// .then((result)=>{
-//     console.log(result);
-// })
-// .catch((error)=>alert(error.message));
+  // eslint-disable-next-line no-unused-vars
+  const [state,dispatch]=useStateValue();
+    
+  const signIn =()=>{
+      const provider = new GoogleAuthProvider();
+    signInWithPopup(auth,provider)
+   .then((result)=>{
+    dispatch({
+      type:actionTypes.SET_USER,
+      user:result.user,
+    });
+    console.log(result.user);
+})
+.catch((error)=>alert(error.message));
     };
 
   return (
@@ -30,3 +38,10 @@ function Login() {
 }
 
 export default Login
+
+
+
+
+
+
+

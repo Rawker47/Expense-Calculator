@@ -5,8 +5,11 @@ import Sidebar from './Sidebar';
 import Feed from './Feed';
 import Widgets from './Widgets';
 import Login from './Login';
+import {useStateValue} from './StateProvider';
 function App() {
-  const user="Yaa null haalyo vane login page aauxa";
+  // eslint-disable-next-line no-unused-vars
+  // const [{user},dispatch]=useStateValue();
+  const user="ada";
   return( 
   <div className="app">
     {!user?(
