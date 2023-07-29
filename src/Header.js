@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
  import "./Header.css";
  import SearchIcon from '@mui/icons-material/Search';
  import HomeIcon from '@mui/icons-material/Home';
@@ -7,14 +7,16 @@ import React from 'react';
  import StoreFrontOutLinedIcon from '@mui/icons-material/Store';
  import SupervisedUserCircleIcon from '@mui/icons-material/SupervisedUserCircle';
  import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { IconButton } from '@mui/material';
+import { Avatar, IconButton } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ForumIcon from '@mui/icons-material/Forum';
+import { useStateValue } from './StateProvider';
 
 
 function Header() {
+  const [{user},dispatch]=useStateValue();
   return (
     <div className="header">
         <div className="header__left">
@@ -47,7 +49,8 @@ function Header() {
         <div className="header__right">
           <div className="header__info">
           <AccountCircleIcon />
-          <h4>Raskin</h4>
+          <Avatar src={user.photoURL}/>
+          <h4>{user.displayName}</h4>
           </div>
         </div>
           <IconButton>

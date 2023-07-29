@@ -1,20 +1,33 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+//  import {createRoot} from 'react-dom/client';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {StateProvider} from './StateProvider';
 import reducer,{initialState} from './reducer';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <StateProvider intialState={initialState} reducer={reducer}>
-    <App />
+import ReactDOM from 'react-dom';
 
-    </StateProvider>
-  </React.StrictMode>
-);
-reportWebVitals();
 
+// const root=createRoot(document.getElementById('root'));
+// root.render(
+//   <React.StrictMode>
+//     <StateProvider initialState={initialState} reducer={reducer}>
+//       <App/>
+//     </StateProvider>
+//   </React.StrictMode>,
+//   document.getElementById("root")
+// );
+
+
+const container = document.getElementById('root');
+ReactDOM.createRoot(container).render(
+<>
+
+<React.StrictMode>
+      <StateProvider initialState={initialState} reducer={reducer}>
+        <App/>
+      </StateProvider>
+      </React.StrictMode>
+</>
+  );
